@@ -1,0 +1,27 @@
+{
+    "platoon_1":
+    [
+        {
+            "name": "1소대위조",
+            "job": "leader_shooter"
+        }
+    ],
+    "platoon_2":
+    [
+        {
+            "name": "박영준",
+            "job": "shooter"
+        },
+        {
+            "name": "2소대당직",
+            "job": "on_duty"
+        }
+    ],
+    "platoon_3":
+    [
+        {
+            "name": "3소대신병",
+            "job": "sub_shooter"
+        }
+    ]
+}

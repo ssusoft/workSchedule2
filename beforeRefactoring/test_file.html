@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <meta charset="UTF-8">
+    <head>
+        <style>
+            th{
+                width:88%;
+                background-color: rgb(255,182,193);
+            }
+            td{
+                text-align: center;
+                border: solid 1px;
+            }
+            ul{
+                float:left;
+                padding:20px;
+            }
+            hr{
+                float:right;
+                height:1000px;
+                width:0px;
+                border-right:40px;
+            }
+            li{
+                text-align:left;
+                padding-right:30px;
+            }
+
+        </style>
+        <script type="text/javascript" src="jquery.js"></script>
+
+        <script>
+            // 처음 실행 시 json으로부터 데이터를 받아와 양식에 초깃값을 설정해준다.
+            // "C:\Program Files\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="C:\chrome"
+           
+            var html;
+
+            window.onload=function(){
+                init_html();
+            }
+
+            // 웹페이지 불러오기가 완료되는 순간 실행
+
+            function init_html(){
+                console.log("init_html!!");
+                $.getJSON("test_file.json", function(json) {
+                    
+                    for(var i=0; i<json._1co.length; ++i){
+                        html += draw_table_line();
+                    }
+
+                    $('#table_body').html(html);
+                    var tag_platoon_class = document.getElementsByClassName("platoon");
+                    var tag_name_class = document.getElementsByClassName("name");
+                    var tag_job_class = document.getElementsByClassName("job");
+                    var tag_holiday_start_date_class = document.getElementsByClassName("holiday_start_date");
+                    var tag_holiday_return_date_class = document.getElementsByClassName("holiday_return_date");
+                    var tag_overnight_class = document.getElementsByClassName("overnight");
+                    var tag_weekday_outing_class = document.getElementsByClassName("weekday_outing");
+                    var tag_weekend_outing_class = document.getElementsByClassName("weekend_outing");
+                    var tag_discharge_date_class = document.getElementsByClassName("discharge_date");
+
+                    for(var i=0; i<tag_name_class.length; i++){
+                        tag_platoon_class[i].value=json._1co[i].platoon;
+                        tag_platoon_class[i].innerHTML=tag_platoon_class[i].value;
+
+                        tag_name_class[i].value=json._1co[i].name;
+                        tag_name_class[i].innerHTML=tag_name_class[i].value;                        
+                        tag_job_class[i].value = json._1co[i].job;   
+                        tag_holiday_start_date_class[i].value=json._1co[i].holiday_start_date;
+                        tag_holiday_return_date_class[i].value=json._1co[i].holiday_return_date;
+                        tag_overnight_class[i].value=json._1co[i].overnight;
+                        tag_weekday_outing_class[i].value=json._1co[i].weekday_outing;
+                        tag_weekend_outing_class[i].value=json._1co[i].weekend_outing;
+                        tag_discharge_date_class[i].value=json._1co[i].discharge_date;
+                    }
+                });
+            }
+
+            function refresh_html(){
+                console.log('refresh_html!!');
+            }
+
+            function draw_table_line(){
+                var ret = '<tr>';
+                ret += '<td class="platoon">미설정</td>';
+                ret += '<td class="name">미설정</td>';
+                ret += '<td>';
+                ret += '<select class="job">';
+                ret += '<option value="fir">미설정</option>';
+                ret += '<option value="on_duty">당직</option>';
+                ret += '<option value="leader_shooter">위병조장</option>';
+                ret += '<option value="shooter">사수</option>';
+                ret += '<option value="sub_shooter">부사수</option>';
+                ret += '</select>';
+                ret += '</td>';
+                ret += '<td>';
+                ret += '<input type="date" class="holiday_start_date">';
+                ret += '</td>';
+                ret += '<td>';
+                ret += '<input type="date" class="holiday_return_date">';
+                ret += '</td>';
+                ret += '<td>';
+                ret += '<input type="date" class="overnight">';
+                ret += '</td>';
+                ret += '<td>';
+                ret += '<input type="date" class="weekday_outing">';
+                ret += '</td>';
+                ret += '<td>';
+                ret += '<input type="date" class="weekend_outing">';
+                ret += '</td>';
+                ret += '<td>';
+                ret += '<input type="date" class="discharge_date">';
+                ret += '</td>';
+                ret += '</tr>';
+
+                return ret;
+            }
+
+            function save_json(){
+                var tag_platoon_class = document.getElementsByClassName("platoon");
+                var tag_name_class = document.getElementsByClassName("name");
+                var tag_job_class = document.getElementsByClassName("job");
+                var tag_holiday_start_date_class = document.getElementsByClassName("holiday_start_date");
+                var tag_holiday_return_date_class = document.getElementsByClassName("holiday_return_date");
+                var tag_overnight_class = document.getElementsByClassName("overnight");
+                var tag_weekday_outing_class = document.getElementsByClassName("weekday_outing");
+                var tag_weekend_outing_class = document.getElementsByClassName("weekend_outing");
+                var tag_discharge_date_class = document.getElementsByClassName("discharge_date");
+
+                var num = tag_name_class.length;
+                var string_data_set = new Array();
+
+                for(var i=0; i<num; ++i){
+                    var data = new Object();
+                    data.platoon = tag_platoon_class[i].value;    
+                    data.name = tag_name_class[i].value;
+                    data.job = tag_job_class[i].value;
+                    data.holiday_start_date = tag_holiday_start_date_class[i].value;
+                    data.holiday_return_date = tag_holiday_return_date_class[i].value;
+                    data.overnight = tag_overnight_class[i].value;
+                    data.weekday_outing = tag_weekday_outing_class[i].value;
+                    data.weekend_outing = tag_weekend_outing_class[i].value;
+                    data.discharge_date = tag_discharge_date_class[i].value;
+
+                    string_data_set.push(data);
+                }
+                var json_data = JSON.stringify(string_data_set);
+                alert('save_to_file!!');
+                json_data = '{"_1co":'+ json_data + "}"; 
+                download_json('saved_file.json', json_data);
+            }
+            // 파일이 '다운로드' 폴더로 이동한다는 문제점. 불러오기 시 수정 필요
+            function download_json(file_name, content){
+                var blob = new Blob([content], {type:'text/plain'});
+                objURL = window.URL.createObjectURL(blob);
+                // 이전에 생성된 메모리 해제
+                if (window.__Xr_objURL_forCreatingFile__) {
+                    window.URL.revokeObjectURL(window.__Xr_objURL_forCreatingFile__);
+                }
+                window.__Xr_objURL_forCreatingFile__ = objURL;
+                var a = document.createElement('a');
+                a.download=file_name;
+                a.href=objURL;
+                a.click();
+            }
+        </script>
+    </head>
+    <body>
+        <ul class="menu_list" style="list-style-type:none;">
+            <hr style="float:right; height:1000px; width:0px; border-right:40px;">
+            <li>중대 인원 관리</li>
+            <li>위병소</li>
+            <li>CCTV</li>
+            <li>불침번</li>
+            <li>동초</li>
+            <li>당직</li>
+            <li>근무공정표</li>
+        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>소대</th>
+                    <th>이름</th>
+                    <th>직업</th>
+                    <th>휴가출발</th>
+                    <th>휴가복귀</th>
+                    <th>외박</th>
+                    <th>평일외출</th>
+                    <th>주말외출</th>
+                    <th>전역</th>
+                </tr>
+            </thead>
+            <tbody id="table_body">
+            </tbody>
+        </table>
+        <div id="space">
+            <hr style="background-color:red; width:88%; height:20px; float:left;" display="block">
+        </div>
+
+        <div id="button">
+            <input type="button" display="block" onclick="save_json()" value="저장">
+            <input type="button" display="block" onclick="get_json()" value="불러오기">
+        </div>
+    </body>

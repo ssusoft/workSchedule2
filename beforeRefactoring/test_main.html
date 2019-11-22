@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+  <head>  
+    <meta charset="utf-8">
+    <title>HTML TEST PAGE</title>
+    <style>
+      table {
+        width: 100%;
+      }
+      th, td{
+        border: 1px solid #bcbcbc;
+      }
+      #item{
+          text-align : center;
+      }
+      #input{
+          border: none;
+          text-align : center;
+      }
+    </style>
+  </head>
+  <body>
+    <h3 style="text-align: center">중대 인원 관리 페이지</h3>
+    <table>
+      <thead>
+        <tr style= "background-color:rgb(255, 182, 193)">
+            <th>소대</th>
+            <th>이름</th>
+            <th>가용 근무</th>
+            <th>상태</th>
+            <th>근무 횟수</th>
+            <th>전역일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>
+                <select name="platoon">
+                  <option value="head">본부</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+          </th>
+          <td id="item">
+                <input type="text" name="name" value="이름" id="input">
+          </td>
+          <td id="item">
+              <select name="work_position">
+                  <option value="shooter">사수</option>
+                  <option value="sub_shooter">부사수</option>
+                  <option value="leader_shooter">위병조장</option>
+                  <option value="on_duty">당직병</option>
+              </select>
+          </td>
+          <td id="item">
+              <select name="state">
+                  <option value="none">생활</option>
+                  <option value="holiday">휴가</option> 
+                  <option value="outing">외출</option>
+                  <option value="drive">파견</option>
+              </select>
+          </td>
+          <td id="item">10</td>
+          <td id="item">20201027</td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" style="float:right" onclick="delete_th()">삭제</button>
+    <button type="button" style="float:right" onclick="add_th()">추가</button>
+  </body>
+</html>

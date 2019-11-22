@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+    <!-- json 파일 저장하기 -->
+        <script type="text/javascript" src="jquery.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $.getJSON('peopleList.json', function(data) {
+                   var html = "<h1>중대 인원 편집 페이지</h1>" + "<table style='width:50%'>" + "<tr style='background-color:rgb(255,182,193)'>" + "<th>소대</th>" + "<th>이름</th>" + "<th>직업</th>" + "<th>상태</th>" + "<th>근무 횟수</th>" + "<th>입대일</th>" + "<th>전역일</th>" + "</tr>";
+                    $.each(data, function(I, item){
+                        html +='<tr>';
+                        html +='<th>' + item.platoon + '</th>';
+                        html +='<th>' + item.name + '</th>';
+                        html +='<th>' + item.job + '</th>';
+                        html +='<th>' + item.state + '</th>';
+                        html +='<th>' + item.work_count + '</th>';
+                        html +='<th>' + item.lately_work_date + '</th>';
+                        html +='<th>' + item.discharge_date + '</th>';
+                        html +='</tr>';
+                    });
+                    html += '</table>';
+                    $('#testContainer').html(html);
+                });
+            });
+        </script>
+
+        <!-- json 파일 저장하기 -->
+	    <title>중대 인원 정리</title>
+    </head>
+
+    <body>
+        <div id="testContainer"></div>
+    </body>

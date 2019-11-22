@@ -1,0 +1,49 @@
+{
+    "_1co":
+    [
+        {
+            "platoon":2,
+            "name": "박영준",
+            "job": "shooter",
+            "holiday_start_date": "2020-01-17",
+            "holiday_return_date": "2020-01-24",
+            "overnight": "2019-11-16",
+            "weekday_outing": "2019-11-04",
+            "weekend_outing": "2019-11-09",
+            "discharge_date": "2020-10-27"
+        },
+        {
+            "platoon":1,
+            "name": "선임당직",
+            "job": "on_duty",
+            "holiday_start_date": "2019-11-11",
+            "holiday_return_date": "2019-11-24",
+            "overnight": "2019-11-09",
+            "weekday_outing": "2019-11-07",
+            "weekend_outing": "2019-11-02",
+            "discharge_date": "2019-12-12"
+        },
+        {
+            "platoon":3,
+            "name": "선임위조",
+            "job": "leader_shooter",
+            "holiday_start_date": "2019-11-01",
+            "holiday_return_date": "2019-11-15",
+            "overnight": "2019-11-16",
+            "weekday_outing": "2019-11-25",
+            "weekend_outing": "2019-11-23",
+            "discharge_date": "2020-01-14"
+        },
+        {
+            "platoon":2,
+            "name": "신병",
+            "job": "sub_shooter",
+            "holiday_start_date": "1111-11-11",
+            "holiday_return_date": "1111-11-11",
+            "overnight": "1111-11-11",
+            "weekday_outing": "1111-11-11",
+            "weekend_outing": "1111-11-11",
+            "discharge_date": "1111-11-11"
+        }
+    ]
+}

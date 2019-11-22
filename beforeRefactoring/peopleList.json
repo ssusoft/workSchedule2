@@ -1,0 +1,10 @@
+[
+    {"platoon":2, "name":"1번마", "job":"shooter", "state":"none", "work_count":1, "lately_work_date":20190929,
+        "discharge_date":20200911},
+    {"platoon":2, "name":"2번마", "job":"sub_shooter", "state":"holiday", "work_count":2, "lately_work_date":20190930,
+        "discharge_date":20201027},
+    {"platoon":2, "name":"3번마", "job":"leader_shooter", "state":"outing", "work_count":3, "lately_work_date":20191001,
+        "discharge_date":20201122},
+    {"platoon":2, "name":"4번마", "job":"on_duty", "state":"driver", "work_count":4, "lately_work_date":20191002,
+        "discharge_date":20201225}
+]
