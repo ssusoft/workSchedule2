@@ -44,7 +44,6 @@ module.exports={
             write += `</div></form>`;
         }
         else{
-            console.log("contenteditable===false");
             var write = `
             <div class='container'>
                 <div class='row'>
@@ -142,6 +141,7 @@ module.exports={
         body += '</ul>';
         body += '<p><a href="/add">add</a></p>'
         body += '<p><a href="/update">update</a></p>';
+        body += '<p><a href="/delete">delete</a></p>';
         return header + body;
     }
 }
