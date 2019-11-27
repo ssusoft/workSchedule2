@@ -4,7 +4,8 @@
         {
             "platoon":"1",
             "name": "1소대위조",
-            "job": "leader_shooter"
+            "job": "leader_shooter",
+            "discharge": "2020-01-01"
         }
     ],
     "platoon_2":
@@ -12,12 +13,14 @@
         {
             "platoon":"2",
             "name": "박영준",
-            "job": "shooter"
+            "job": "shooter",
+            "discharge" :"2020-10-27"
         },
         {
             "platoon":"2",
             "name": "2소대당직",
-            "job": "on_duty"
+            "job": "on_duty",
+            "discharge": "2020-02-02"
         }
     ],
     "platoon_3":
@@ -25,7 +28,8 @@
         {
             "platoon":"3",
             "name": "3소대신병",
-            "job": "sub_shooter"
+            "job": "sub_shooter",
+            "discharge": "2020-03-03"
         }
     ]
 }

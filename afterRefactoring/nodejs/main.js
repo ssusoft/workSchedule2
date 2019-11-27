@@ -2,8 +2,8 @@ var http = require('http');
 var url = require('url');
 var fs = require('fs');
 var qs = require('querystring');
-const md = require('/tmp/guest-96qjab/Desktop/workSchedule2-master/afterRefactoring/lib/template.js');
-const func = require('/tmp/guest-96qjab/Desktop/workSchedule2-master/afterRefactoring/lib/function.js');
+const md = require('/tmp/guest-tmopks/Desktop/workSchedule2-master/afterRefactoring/lib/template.js');
+const func = require('/tmp/guest-tmopks/Desktop/workSchedule2-master/afterRefactoring/lib/function.js');
 
 var app = http.createServer(function(request, response){
     var _url = request.url;
@@ -15,7 +15,7 @@ var app = http.createServer(function(request, response){
             var html = md.frame(`
             <meta charset='utf-8'>
             <style>
-                .container{display:table;}한다
+                .container{display:table;}
                 .row{display:table-row;}
                 .cell{display:table-cell; width:20%; text-align:center; border-width:1px; border-style:solid; border-color:black;}
             </style>`,
@@ -108,14 +108,6 @@ var app = http.createServer(function(request, response){
             response.writeHead(302, {Location:`/`});
             response.end(); 
         })
-    }
-    else if(pathname === '/delete'){
-        console.log("pathname === '/delete");
-        // 여기부터 시작, delete에 대한 html 페이지 추가하고, x 버튼을 누르면 그 라인을 사라지게 하는 식으로 진행할 생각
-        // update에서 모든 라인을 비우고 저장하면 삭제되기는 한다.
-    }
-    else if(pathname === '/delete_process'){
-        console.log("pathname === '/delete_process");
     }
 });
 app.listen(3000);

@@ -21,6 +21,9 @@ module.exports={
                     <div class='cell'>
                         <h5>직업</h5>
                     </div>
+                    <div class='cell'>
+                        <h5>전역</h5>
+                    </div>
                 </div>
             `
             ;
@@ -37,6 +40,7 @@ module.exports={
                     }
                     write += `<div class='cell'><input type="text" name="name" value=${jsonContent[key][index].name}></div>`;
                     write += `<div class='cell'><input type="text" name="job" value=${jsonContent[key][index].job}></div>`;
+                    write += `<div class='cell'><input type="date" name="discharge" value=${jsonContent[key][index].discharge}></div>`;
                     write += `</div>`;
                 }
             }
@@ -56,6 +60,9 @@ module.exports={
                     <div class='cell'>
                         <h5>직업</h5>
                     </div>
+                    <div class='cell'>
+                        <h5>전역</h5>
+                    </div>
                 </div>
             `;
             for(var key in jsonContent){
@@ -71,6 +78,7 @@ module.exports={
                     }
                     write += `<div class='cell'>${jsonContent[key][index].name}</div>`;
                     write += `<div class='cell'>${jsonContent[key][index].job}</div>`;
+                    write += `<div class='cell'>${jsonContent[key][index].discharge}</div>`;
                     write += `</div>`;
                 }
             }
@@ -96,6 +104,9 @@ module.exports={
                         <div class='cell'>
                             <h5>직업</h5>
                         </div>
+                        <div class='cell'>
+                            <h5>전역</h5>
+                        </div>
                     </div>
 
                     <div class='row'>
@@ -107,6 +118,9 @@ module.exports={
                         </div>
                         <div class='cell'>
                            <input type='text' name='job' placeholder='직업'>
+                        </div>
+                        <div class='cell'>
+                            <input type='date' name='discharge'>
                         </div>
                     </div>
                 </div>
@@ -141,7 +155,6 @@ module.exports={
         body += '</ul>';
         body += '<p><a href="/add">add</a></p>'
         body += '<p><a href="/update">update</a></p>';
-        body += '<p><a href="/delete">delete</a></p>';
         return header + body;
     }
 }
