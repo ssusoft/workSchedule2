@@ -3,65 +3,71 @@
     <head>
         <meta charset="UTF-8">
         <title>근무표 양식</title>
-        <style>
-            .container{display:table;}
-            .row{display:table-row;}
-            .cell{display:table-cell; width:20%; text-align:center; border-width:1px; border-style:solid; border-color:black;}
-        </style>
     </head>
     <body>
-        <div class="container">
-            <div class="row" id="title">
-                <h2>경계작전근무표</h2>
-            </div>
-            <div class="row" id="outofWork">
-                <div class="cell">
-                    <span>총원<hr></span>
-                    <p>50</p>
-                </div>
-                <div class="cell">
-                    <span>열외<hr></span>
-                    <p>13</p>
-                </div>
-                <div class="cell">
-                    <span>현재원<hr></span>
-                    <p>37</p>
-                </div>
-                <div class="cell">
-                    <span>열외내용<hr></span>
-                    <p>당직6위조6유류1</p>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="cell">
-                    <span>08:00-09:30</span>
-                </div>
-                <div class="cell">
-                    <span>사수</span>
-                </div>
-                <div class="cell">
-                    <span>부사수</span>
-                </div>
-                <div class="cell">
-                    <span>서명</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="cell">
-                    <span>09:30-11:00</span>
-                </div>
-                <div class="cell">
-                    <span>사수</span>
-                </div>
-                <div class="cell">
-                    <span>부사수</span>
-                </div>
-                <div class="cell">
-                    <span>서명</span>
-                </div>
-            </div>            
-        </div>
+        <table border="1" width="50%" height="30%">
+            <colgroup>
+                <col width="10%"/>
+                <col width="10%"/>
+                <col width="10%"/>
+                <col width="10%"/>
+                <col width="30%"/>
+                <col width="10%"/>
+                <col width="10%"/>
+                <col width="10%"/>
+            </colgroup>
+            <tr>
+                <td colspan="6">19-11-28</td>
+                <td style="text-align: center;">기안</td>
+                <td style="text-align: center;">중대장</td>
+            </tr>
+            <tr>
+                <td colspan="6" style="text-align: center;">경계근무명령서</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+            </tr>
+        </table>
+        <table border="1" width="50%">
+            <colgroup>
+                <col width="10%"/>
+                <col width="10%"/>
+                <col width="10%"/>
+                <col width="10%"/>
+                <col width="30%"/>
+                <col width="10%"/>
+                <col width="10%"/>
+                <col width="10%"/>
+            </colgroup>
+            <tr>
+                <td style="text-align: center;">인원현황</td>
+                <td style="text-align: center;">총원</td>
+                <td style="text-align: center;">열외</td>
+                <td style="text-align: center;">현재원</td>
+                <td style="text-align: center;">열외내용</td>
+                <td style="text-align: center;">가용인원</td>
+                <td style="text-align: center;">근무인원</td>
+                <td style="text-align: center;">근무열외</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">주간</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">야간</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+                <td>&nbsp</td>
+            </tr>
+        </table>
     </body>
 </html>
