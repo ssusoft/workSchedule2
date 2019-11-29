@@ -2,8 +2,8 @@ var http = require('http');
 var url = require('url');
 var fs = require('fs');
 var qs = require('querystring');
-const md = require('/tmp/guest-n4nysl/Desktop/workSchedule2-master/afterRefactoring/lib/template.js');
-const func = require('/tmp/guest-n4nysl/Desktop/workSchedule2-master/afterRefactoring/lib/function.js');
+const md = require('/tmp/guest-eciniw/Desktop/workSchedule2-master/afterRefactoring/lib/template.js');
+const func = require('/tmp/guest-eciniw/Desktop/workSchedule2-master/afterRefactoring/lib/function.js');
 
 var app = http.createServer(function(request, response){
     var _url = request.url;
