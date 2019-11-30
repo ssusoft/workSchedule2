@@ -2,8 +2,9 @@ var http = require('http');
 var url = require('url');
 var fs = require('fs');
 var qs = require('querystring');
-const md = require('/tmp/guest-eciniw/Desktop/workSchedule2-master/afterRefactoring/lib/template.js');
-const func = require('/tmp/guest-eciniw/Desktop/workSchedule2-master/afterRefactoring/lib/function.js');
+const md = require('/tmp/guest-tbsbqs/Desktop/workSchedule2-master/afterRefactoring/lib/template.js');
+const func = require('/tmp/guest-tbsbqs/Desktop/workSchedule2-master/afterRefactoring/lib/function.js');
+var cls = require('/tmp/guest-tbsbqs/Desktop/workSchedule2-master/afterRefactoring/lib/class.js');
 
 var app = http.createServer(function(request, response){
     var _url = request.url;
@@ -108,6 +109,67 @@ var app = http.createServer(function(request, response){
             response.writeHead(302, {Location:`/`});
             response.end(); 
         })
+    }
+
+    else if(pathname === '/make_guardroom'){
+        console.log(pathname === '/make_guardroom');
+        var identificationData = new cls.identificationData(
+            60, 12, 48, "당직6위조6", 48, 36, 12, 60, 12, 48, "당직6위조6", 48, 36, 12
+        );
+        var guardroomData = new cls.guardroomData(
+            new Array("일병", "이병"), 
+            new Array("일병", "이병"),
+            new Array("일병", "이병"),
+            new Array("일병", "이병"),
+            new Array("일병", "이병"),
+            new Array("일병", "이병"),
+            new Array("일병", "이병"),
+            new Array("일병", "이병"),
+            new Array("일병", "이병"),
+            new Array("일병", "이병"),
+            new Array("일병", "이병"),
+            new Array("일병", "이병"),
+            new Array("일병", "이병"),
+            new Array("병장", "상병"),
+            new Array("일병", "이병"),
+            new Array("병장", "상병")
+        );
+        var html = md.frame(`
+        <meta charset="UTF-8">
+        <title>근무표 양식</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            * {
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+            }
+            
+            .page {
+                width: 21cm;
+                min-height: 29.7cm;
+                padding: 2cm;
+                margin: 1cm auto;
+                border: 1px #D3D3D3 solid;
+                border-radius: 5px;
+                background: white;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+            
+            .subpage {
+                padding: 1cm;
+                border: 5px red solid;
+                height: 256mm;
+                outline: 2cm #FFEAEA solid;
+            }
+          </style>
+        `,
+        md.menu() + md.guardroom(identificationData, guardroomData));
+        response.writeHead(200);
+        response.end(html);
     }
 });
 app.listen(3000);

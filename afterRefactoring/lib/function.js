@@ -1,6 +1,6 @@
 var fs = require('fs');
 var qs = require('querystring');
-var soldier = require('./class.js');
+var cls = require('./class.js');
 
 module.exports={
     refreshFile : function(filename, body){
@@ -16,14 +16,14 @@ module.exports={
             jsonContent = JSON.parse(description); // 문자열을 객체로
             for(var key in jsonContent){
                 for(var num=0; num<jsonContent[key].length; ++num){
-                    var oop = new soldier(jsonContent[key][num].platoon, jsonContent[key][num].name, jsonContent[key][num].job, jsonContent[key][num].discharge);
+                    var oop = new cls.soldier(jsonContent[key][num].platoon, jsonContent[key][num].name, jsonContent[key][num].job, jsonContent[key][num].discharge);
                     if(key === 'platoon_1') platoon_1.push(oop);
                     else if(key === 'platoon_2') platoon_2.push(oop);
                     else if(key === 'platoon_3') platoon_3.push(oop);
                 }
             }
 
-            var recruit = new soldier(newData.platoon, newData.name, newData.job, newData.discharge);
+            var recruit = new cls.soldier(newData.platoon, newData.name, newData.job, newData.discharge);
             if(recruit.platoon === '1') platoon_1.push(recruit);
             else if(recruit.platoon === '2') platoon_2.push(recruit);
             else if(recruit.platoon === '3') platoon_3.push(recruit);
@@ -49,7 +49,7 @@ module.exports={
         var platoon_3 = [];
 
         for(var num=0; num<post.platoon.length; ++num){
-            var oop = new soldier(post.platoon[num], post.name[num], post.job[num], post.discharge[num]);
+            var oop = new cls.soldier(post.platoon[num], post.name[num], post.job[num], post.discharge[num]);
             if(oop.platoon === '1') platoon_1.push(oop);
             else if(oop.platoon === '2') platoon_2.push(oop);
             else if(oop.platoon === '3') platoon_3.push(oop);
@@ -63,5 +63,5 @@ module.exports={
         fs.writeFile('./json/unit2.json', jsonData, 'utf8', function(err){
             console.log('function.js/writeToFile/writeFile');
         })
-    }
+    },
 }
