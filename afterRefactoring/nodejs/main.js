@@ -2,9 +2,9 @@ var http = require('http');
 var url = require('url');
 var fs = require('fs');
 var qs = require('querystring');
-const md = require('/tmp/guest-tbsbqs/Desktop/workSchedule2-master/afterRefactoring/lib/template.js');
-const func = require('/tmp/guest-tbsbqs/Desktop/workSchedule2-master/afterRefactoring/lib/function.js');
-var cls = require('/tmp/guest-tbsbqs/Desktop/workSchedule2-master/afterRefactoring/lib/class.js');
+const md = require('../lib/template.js');
+const func = require('../lib/function.js');
+var cls = require('../lib/class.js');
 
 var app = http.createServer(function(request, response){
     var _url = request.url;
@@ -113,10 +113,17 @@ var app = http.createServer(function(request, response){
 
     else if(pathname === '/make_guardroom'){
         console.log(pathname === '/make_guardroom');
-        var identificationData = new cls.identificationData(
+        /*
+        var identificationData = func.makeIdentificationData();
+        */
+        new cls.identificationData(
             60, 12, 48, "당직6위조6", 48, 36, 12, 60, 12, 48, "당직6위조6", 48, 36, 12
         );
-        var guardroomData = new cls.guardroomData(
+        var guardroomData =
+        /* 
+        func.makeGuardroomData();
+        */
+        new cls.guardroomData(
             new Array("일병", "이병"), 
             new Array("일병", "이병"),
             new Array("일병", "이병"),
@@ -134,6 +141,7 @@ var app = http.createServer(function(request, response){
             new Array("일병", "이병"),
             new Array("병장", "상병")
         );
+
         var html = md.frame(`
         <meta charset="UTF-8">
         <title>근무표 양식</title>

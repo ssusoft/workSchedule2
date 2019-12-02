@@ -3,33 +3,153 @@
     [
         {
             "platoon":"1",
-            "name": "1소대위조",
-            "job": "leader_shooter",
+            "name": "1소대왕고_1",
+            "job": "on_duty",
             "discharge": "2020-01-01"
+        },
+        {
+            "platoon":"1",
+            "name": "아무개_2",
+            "job": "leader_shooter",
+            "discharge":"2020-02-02"
+        },
+        {
+            "platoon":"1",
+            "name": "아무개_3",
+            "job": "on_duty",
+            "discharge":"2020-03-03"
+        },
+        {
+            "platoon":"1",
+            "name": "아무개_4",
+            "job": "leader_shooter",
+            "discharge":"2020-04-04"
+        },
+        {
+            "platoon":"1",
+            "name": "아무개_5",
+            "job": "shooter",
+            "discharge":"2020-05-05"
+        },
+        {
+            "platoon":"1",
+            "name": "아무개_6",
+            "job": "shooter",
+            "discharge":"2020-06-06"
+        },
+        {
+            "platoon":"1",
+            "name": "아무개_7",
+            "job": "sub_shooter",
+            "discharge":"2020-07-07"
+        },
+        {
+            "platoon":"1",
+            "name": "아무개_8",
+            "job": "sub_shooter",
+            "discharge":"2020-08-08"
         }
     ],
     "platoon_2":
     [
         {
             "platoon":"2",
-            "name": "박영준",
-            "job": "shooter",
+            "name": "2소대왕고_1",
+            "job": "leader_shooter",
             "discharge" :"2020-10-27"
         },
         {
             "platoon":"2",
-            "name": "2소대당직",
+            "name": "누구냐_2",
             "job": "on_duty",
-            "discharge": "2020-02-02"
+            "discharge" :"2020-11-27"
+        },
+        {
+            "platoon":"2",
+            "name": "누구냐_3",
+            "job": "leader_shooter",
+            "discharge" :"2020-12-27"
+        },
+        {
+            "platoon":"2",
+            "name": "누구냐_4",
+            "job": "on_duty",
+            "discharge" :"2021-01-27"
+        },
+        {
+            "platoon":"2",
+            "name": "누구냐_5",
+            "job": "shooter",
+            "discharge" :"2021-02-27"
+        },
+        {
+            "platoon":"2",
+            "name": "누구냐_6",
+            "job": "shooter",
+            "discharge" :"2021-03-27"
+        },
+        {
+            "platoon":"2",
+            "name": "누구냐_7",
+            "job": "sub_shooter",
+            "discharge" :"2021-04-27"
+        },
+        {
+            "platoon":"2",
+            "name": "누구냐_8",
+            "job": "sub_shooter",
+            "discharge" :"2021-05-27"
         }
     ],
     "platoon_3":
     [
         {
             "platoon":"3",
-            "name": "3소대신병",
+            "name": "3소대왕고_1",
+            "job": "leader_shooter",
+            "discharge" :"2021-01-03"
+        },
+        {
+            "platoon":"3",
+            "name": "홍길동_2",
+            "job": "leader_shooter",
+            "discharge" :"2021-02-03"
+        },
+        {
+            "platoon":"3",
+            "name": "홍길동_3",
+            "job": "on_duty",
+            "discharge" :"2021-03-03"
+        },
+        {
+            "platoon":"3",
+            "name": "홍길동_4",
+            "job": "on_duty",
+            "discharge" :"2021-04-03"
+        },
+        {
+            "platoon":"3",
+            "name": "홍길동_5",
+            "job": "shooter",
+            "discharge" :"2021-05-03"
+        },
+        {
+            "platoon":"3",
+            "name": "홍길동_6",
+            "job": "shooter",
+            "discharge" :"2021-06-03"
+        },
+        {
+            "platoon":"3",
+            "name": "홍길동_7",
             "job": "sub_shooter",
-            "discharge": "2020-03-03"
+            "discharge" :"2021-07-03"
+        },
+        {
+            "platoon":"3",
+            "name": "홍길동_8",
+            "job": "sub_shooter",
+            "discharge" :"2021-08-03"
         }
     ]
 }
