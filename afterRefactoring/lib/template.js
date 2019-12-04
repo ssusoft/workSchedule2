@@ -25,6 +25,15 @@ module.exports={
                     <div class='cell'>
                         <h5>전역</h5>
                     </div>
+                    <div class='cell'>
+                        <h5>개인정비 근무 횟수</h5>
+                    </div>
+                    <div class='cell'>
+                        <h5>야간 근무 횟수</h5>
+                    </div>
+                    <div class='cell'>
+                        <h5>총 근무 횟수</h5>
+                    </div>
                 </div>
             `
             ;
@@ -42,6 +51,9 @@ module.exports={
                     write += `<div class='cell'><input type="text" name="name" value=${jsonContent[key][index].name}></div>`;
                     write += `<div class='cell'><input type="text" name="job" value=${jsonContent[key][index].job}></div>`;
                     write += `<div class='cell'><input type="date" name="discharge" value=${jsonContent[key][index].discharge}></div>`;
+                    write += `<div class='cell'><input type="date" name="discharge" value=${jsonContent[key][index].breakNum}></div>`;
+                    write += `<div class='cell'><input type="date" name="discharge" value=${jsonContent[key][index].nightNum}></div>`;
+                    write += `<div class='cell'><input type="date" name="discharge" value=${jsonContent[key][index].workNum}></div>`;
                     write += `</div>`;
                 }
             }
@@ -64,6 +76,15 @@ module.exports={
                     <div class='cell'>
                         <h5>전역</h5>
                     </div>
+                    <div class='cell'>
+                        <h5>개인정비 근무 횟수</h5>
+                    </div>
+                    <div class='cell'>
+                        <h5>야간 근무 횟수</h5>
+                    </div>
+                    <div class='cell'>
+                        <h5>총 근무 횟수</h5>
+                    </div>
                 </div>
             `;
             for(var key in jsonContent){
@@ -80,6 +101,9 @@ module.exports={
                     write += `<div class='cell'>${jsonContent[key][index].name}</div>`;
                     write += `<div class='cell'>${jsonContent[key][index].job}</div>`;
                     write += `<div class='cell'>${jsonContent[key][index].discharge}</div>`;
+                    write += `<div class='cell'>${jsonContent[key][index].breakNum}</div>`;
+                    write += `<div class='cell'>${jsonContent[key][index].nightNum}</div>`;
+                    write += `<div class='cell'>${jsonContent[key][index].workNum}</div>`;
                     write += `</div>`;
                 }
             }
@@ -108,8 +132,16 @@ module.exports={
                         <div class='cell'>
                             <h5>전역</h5>
                         </div>
+                        <div class='cell'>
+                            <h5>개인정비 근무 횟수</h5>
+                        </div>
+                        <div class='cell'>
+                            <h5>야간 근무 횟수</h5>
+                        </div>
+                        <div class='cell'>
+                            <h5>총 근무 횟수</h5>
+                        </div>
                     </div>
-
                     <div class='row'>
                         <div class='cell'>
                            <input type='text' name='platoon' placeholder='소대'>
@@ -122,6 +154,15 @@ module.exports={
                         </div>
                         <div class='cell'>
                             <input type='date' name='discharge'>
+                        </div>
+                        <div class='cell'>
+                            <input type='text' name='breakNum' value='0' readonly>
+                        </div>
+                        <div class='cell'>
+                            <input type='text' name='nightNum' value='0' readonly>
+                        </div>
+                        <div class='cell'>
+                            <input type='text' name='workNum' value='0' readonly>
                         </div>
                     </div>
                 </div>

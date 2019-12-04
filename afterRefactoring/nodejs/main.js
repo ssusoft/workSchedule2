@@ -18,7 +18,7 @@ var app = http.createServer(function(request, response){
             <style>
                 .container{display:table;}
                 .row{display:table-row;}
-                .cell{display:table-cell; width:20%; text-align:center; border-width:1px; border-style:solid; border-color:black;}
+                .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
             </style>`,
             md.menu() + md.list('./json/unit2.json', 'false'));
             response.writeHead(200);
@@ -35,7 +35,7 @@ var app = http.createServer(function(request, response){
             <style>
                 .container{display:table;}
                 .row{display:table-row;}
-                .cell{display:table-cell; width:20%; text-align:center; border-width:1px; border-style:solid; border-color:black;}
+                .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
             </style>`,
             md.menu() + md.list('./json/unit2.json', 'false'));
 
@@ -64,7 +64,7 @@ var app = http.createServer(function(request, response){
         <style>
             .container{display:table;}
             .row{display:table-row;}
-            .cell{display:table-cell; width:20%; text-align:center; border-width:1px; border-style:solid; border-color:black;}
+            .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
         </style>
         `,
         md.menu() + md.list('./json/unit2.json', 'false') + md.empty());
@@ -90,7 +90,7 @@ var app = http.createServer(function(request, response){
         <style>
             .container{display:table;}
             .row{display:table-row;}
-            .cell{display:table-cell; width:20%; text-align:center; border-width:1px; border-style:solid; border-color:black;}
+            .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
         </style>
         `,
         md.menu() + md.list('./json/unit2.json', 'true'));
@@ -116,6 +116,7 @@ var app = http.createServer(function(request, response){
         /*
         var identificationData = func.makeIdentificationData();
         */
+        var identificationData = 
         new cls.identificationData(
             60, 12, 48, "당직6위조6", 48, 36, 12, 60, 12, 48, "당직6위조6", 48, 36, 12
         );

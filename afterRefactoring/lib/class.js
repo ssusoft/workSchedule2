@@ -1,26 +1,22 @@
 module.exports = {
-    soldier : function(platoon, name, job, discharge) {
+    soldier : function(platoon, name, job, discharge, breakNum, nightNum, workNum) {
         this.platoon = platoon;
         this.name = name;
         this.job = job;
         this.discharge = discharge;
-    },
-
-    worker : function(soldier, breakNum, nightNum, workNum){
-        this.soldier = soldier;
         this.breakNum = breakNum; // 주말, 개인정비 시간
         this.nightNum = nightNum; // 야간
         this.workNum = workNum; // 총 근무 횟수
     },
 
     identificationData : function(mTotal, mExcept, mNow, mExceptContent, mUseable, mUsed, mExceptUse, dTotal, dExcept, dNow, dExceptContent, dUseable, dUsed, dExceptUse){
-        this.mTotal = mTotal;
-        this.mExcept = mExcept;
-        this.mNow = mNow;
-        this.mExceptContent = mExceptContent;
-        this.mUseable = mUseable;
-        this.mUsed = mUsed;
-        this.mExceptUse = mExceptUse;
+        this.mTotal = mTotal; // 총원
+        this.mExcept = mExcept; // 열외
+        this.mNow = mNow; // 현재원
+        this.mExceptContent = mExceptContent; // 열외내용
+        this.mUseable = mUseable; // 가용인원
+        this.mUsed = mUsed; // 근무인원
+        this.mExceptUse = mExceptUse; // 가용인원 - 근무인원
         this.dTotal = dTotal;
         this.dExcept = dExcept;
         this.dNow = dNow;
