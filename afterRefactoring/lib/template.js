@@ -187,6 +187,10 @@ module.exports={
         `;
     },
 
+    maketable : function(data){
+        // data 를 테이블에 표현
+    },
+
     menu : function(){
         var filelist = fs.readdirSync('./data'); 
         var header = '<h1>메인 메뉴</h1>';
@@ -195,12 +199,8 @@ module.exports={
             body += `<li><a href="/${filelist[i]}">${filelist[i]}</a></li>`;
         }
         body += '</ul>';
-        body += '<p><a href="/add">add</a></p>'
-        body += '<p><a href="/update">update</a></p>';
-        body += '<p><a href="/make_guardroom">make_guardroom</a></p>'
         return header + body;
     },
-
     guardroom : function(identificationData, guardroomData){
         var write = 
         `

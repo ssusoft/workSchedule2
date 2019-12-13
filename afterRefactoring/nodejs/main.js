@@ -20,7 +20,7 @@ var app = http.createServer(function(request, response){
                 .row{display:table-row;}
                 .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
             </style>`,
-            md.menu() + md.list('./json/unit2.json', 'false'));
+            md.menu());
             response.writeHead(200);
             response.end(html);
         }
@@ -28,35 +28,72 @@ var app = http.createServer(function(request, response){
             console.log("1.미완성");
         }
     }
-    else if(pathname === '/gate'){ // 위병소
-        console.log('pathname === /gate');
+
+    else if(pathname === '/main'){
         var html = md.frame(`
-            <meta charset='utf-8'>
-            <style>
-                .container{display:table;}
-                .row{display:table-row;}
-                .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
-            </style>`,
-            md.menu() + md.list('./json/unit2.json', 'false'));
+        <meta charset='utf-8'>
+        <style>
+            .container{display:table;}
+            .row{display:table-row;}
+            .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
+        </style>`,
+        md.menu());
 
         response.writeHead(200);
         response.end(html);
     }
-    else if(pathname === '/nightMove'){ // 동초
-        console.log('pathname === /nightMove');
-        response.writeHead(302, {Location:`/`});
-        response.end(); 
+
+    else if(pathname === '/make'){
+        console.log('pathname === /make');
+        var html = md.frame(`
+        <meta charset='utf-8'>
+        <style>
+            .container{display:table;}
+            .row{display:table-row;}
+            .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
+        </style>`,
+        md.menu());
+        var workerObj = func.makeWorkerObj('./json/unit2.json');
+        var workerArr;
+        workerObj = func.sortWorkerObj(workerObj);
+        workerArr = func.assignWorker(workerObj);
+        for(var i=0; i<12; ++i){
+            console.log('workerArr[' + i + '].name : ' + workerArr[i].name);
+        }
+        response.writeHead(200);
+        response.end(html);
+
     }
-    else if(pathname === '/nightStand'){ // 불침번
-        console.log('pathname === /nightStand');
-        response.writeHead(302, {Location:`/`});
-        response.end(); 
+
+    else if(pathname === '/management'){
+        console.log('pathname === /management');
+        var html = md.frame(`
+        <meta charset='utf-8'>
+        <style>
+            .container{display:table;}
+            .row{display:table-row;}
+            .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
+        </style>`,
+        md.menu() + '<p><a href="/add">add</a></p>' + '<p><a href="/update">update</a></p>' + '<p><a href="/make_guardroom">make_guardroom</a></p>'+ md.list('./json/unit2.json', 'false'));
+
+        response.writeHead(200);
+        response.end(html);
     }
-    else if(pathname === '/cctv'){
-        console.log('pathname === /cctv');
-        response.writeHead(302, {Location:`/`});
-        response.end(); 
+
+    else if(pathname === '/worktable'){
+        var html = md.frame(`
+        <meta charset='utf-8'>
+        <style>
+            .container{display:table;}
+            .row{display:table-row;}
+            .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
+        </style>`,
+        md.menu() + '<p><a href="/add">add</a></p>' + '<p><a href="/update">update</a></p>' + '<p><a href="/make_guardroom">make_guardroom</a></p>'+ md.list('./json/unit2.json', 'false'));
+
+        response.writeHead(200);
+        response.end(html);
     }
+
     else if(pathname === '/add'){
         console.log('pathname === /add');
         var html = md.frame(`
@@ -112,19 +149,19 @@ var app = http.createServer(function(request, response){
     }
 
     else if(pathname === '/make_guardroom'){
+    /*
         console.log(pathname === '/make_guardroom');
-        /*
+
         var identificationData = func.makeIdentificationData();
-        */
+
         var identificationData = 
         new cls.identificationData(
             60, 12, 48, "당직6위조6", 48, 36, 12, 60, 12, 48, "당직6위조6", 48, 36, 12
         );
         var guardroomData =
-        /* 
+
         func.makeGuardroomData();
-        */
-        new cls.guardroomData(
+            new cls.guardroomData(
             new Array("일병", "이병"), 
             new Array("일병", "이병"),
             new Array("일병", "이병"),
@@ -179,6 +216,7 @@ var app = http.createServer(function(request, response){
         md.menu() + md.guardroom(identificationData, guardroomData));
         response.writeHead(200);
         response.end(html);
+        */
     }
 });
 app.listen(3000);

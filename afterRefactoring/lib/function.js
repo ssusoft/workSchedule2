@@ -77,7 +77,7 @@ module.exports={
 
         for(var key in jsonContent){
             for(var index = 0; index < jsonContent[key].length; ++index){
-                if(jsonContent[key][index].job === 'shooter' || jsonContent[key][index].job === 'sub_shooter'){
+                if(jsonContent[key][index].job != 'on_duty'){ // cctv 근무 전용, 당직병은 근무 제외
                     if(key === "platoon_1"){
                         worker1.push(jsonContent[key][index]);
                     }
@@ -97,30 +97,13 @@ module.exports={
         return workerObj;
     },
 
-    sortWorkerArr : function(workerArr, option){
+    sortWorkerArr : function(workerArr){
         var i, j, least, temp;
-        if(option === 'holiday'){
-            for(i=0; i<workerArr.length - 1; ++i){
-                least = i;
-                for(j=i+1; j<workerArr.length; ++j){
-                    if(workerArr[j].breakNum < workerArr[least].breakNum){
-                        least = j;
-                    }
-                }
-                if(i != least){
-                    temp = workerArr[i];
-                    workerArr[i] = workerArr[least];
-                    workerArr[least] = temp;
-                }
-            }
-        }
-        else if(option ==='night'){
-            for(i=0; i<workerArr.length - 1; ++i){
-                least = i;
-                for(j=i+1; j<workerArr.length; ++j){
-                    if(workerArr[j].nightNum < workerArr[least].nightNum){
-                        least = j;
-                    }
+        for(i=0; i<workerArr.length - 1; ++i){
+            least = i;
+            for(j=i+1; j<workerArr.length; ++j){
+                if(workerArr[j].breakNum < workerArr[least].breakNum){
+                    least = j;
                 }
                 if(i != least){
                     temp = workerArr[i];
@@ -139,7 +122,27 @@ module.exports={
         return workerObj;
     },
 
-    matchingWorker : function(workerObj, option){
-        // 정렬 기반으로 근무 짝 제작, 열외 추가 필요,
+    assignWorker : function(workerObj){
+        var standard = new Date().getDate();
+        var workArr = new Array();
+        for(var i=0; i<4; ++i){ // 하루 cctv 근무는 총 12개, 12개를 3으로 나누면 4
+            if(standard % 3 == 1){ // 날짜를 3으로 나누었을때 나머지가 1이면 1소대부터 근무 투입
+                workArr.push(workerObj.worker1[i]);
+                workArr.push(workerObj.worker2[i]);
+                workArr.push(workerObj.worker3[i]);
+            }
+            else if(standard % 3 == 2){ // 날짜를 3으로 나누었을때 나머지가 2이면 2소대부터 근무 투입
+                workArr.push(workerObj.worker2[i]);
+                workArr.push(workerObj.worker3[i]);
+                workArr.push(workerObj.worker1[i]);
+            }
+            else{ // 3소대부터 근무투입
+                workArr.push(workerObj.worker3[i]);
+                workArr.push(workerObj.worker1[i]);
+                workArr.push(workerObj.worker2[i]);
+            }
+            // 근무공정표 추가 필요
+        }
+        return workArr;
     }
 }
