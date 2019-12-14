@@ -74,7 +74,7 @@ var app = http.createServer(function(request, response){
             .row{display:table-row;}
             .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
         </style>`,
-        md.menu() + '<p><a href="/add">add</a></p>' + '<p><a href="/update">update</a></p>' + '<p><a href="/make_guardroom">make_guardroom</a></p>'+ md.list('./json/unit2.json', 'false'));
+        md.menu() + '<p><a href="/add">add</a></p>' + '<p><a href="/update">update</a></p>' + '<p><a href="/make_guardroom">make_guardroom</a></p>'+ md.list('./json/unit2.json', 'check'));
 
         response.writeHead(200);
         response.end(html);
@@ -88,7 +88,7 @@ var app = http.createServer(function(request, response){
             .row{display:table-row;}
             .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
         </style>`,
-        md.menu() + '<p><a href="/add">add</a></p>' + '<p><a href="/update">update</a></p>' + '<p><a href="/make_guardroom">make_guardroom</a></p>'+ md.list('./json/unit2.json', 'false'));
+        md.menu() + '<p><a href="/add">add</a></p>' + '<p><a href="/update">update</a></p>' + '<p><a href="/make_guardroom">make_guardroom</a></p>'+ md.list('./json/unit2.json', 'check'));
 
         response.writeHead(200);
         response.end(html);
@@ -104,10 +104,11 @@ var app = http.createServer(function(request, response){
             .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
         </style>
         `,
-        md.menu() + md.list('./json/unit2.json', 'false') + md.empty());
+        md.menu() + md.empty());
         response.writeHead(200);
         response.end(html);
     }
+
     else if(pathname === '/add_process'){
         console.log('pathname === /add_process');
         var body = '';
@@ -120,6 +121,7 @@ var app = http.createServer(function(request, response){
             response.end(); 
         })
     }
+
     else if(pathname === '/update'){
         console.log('pathname === /update');
         var html = md.frame(`
@@ -130,7 +132,7 @@ var app = http.createServer(function(request, response){
             .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
         </style>
         `,
-        md.menu() + md.list('./json/unit2.json', 'true'));
+        md.menu() + md.list('./json/unit2.json', 'update'));
         response.writeHead(200);
         response.end(html);
     }
@@ -146,6 +148,19 @@ var app = http.createServer(function(request, response){
             response.writeHead(302, {Location:`/`});
             response.end(); 
         })
+    }
+
+    else if(pathname === '/delete'){
+        console.log('pathname === /delete');
+        var html = md.frame(`
+        <meta charset='utf-8'>
+        <style>
+            .container{display:table;}
+            .row{display:table-row;}
+            .cell{display:table-cell; width:1px; white-space: nowrap; text-align:center; border-width:1px; border-style:solid; border-color:black;}
+        </style>
+        `,
+        md.menu() + md.list('./json/unit2.json', 'update'));
     }
 
     else if(pathname === '/make_guardroom'){

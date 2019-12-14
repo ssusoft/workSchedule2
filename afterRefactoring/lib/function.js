@@ -17,14 +17,14 @@ module.exports={
             for(var key in jsonContent){
                 for(var num=0; num<jsonContent[key].length; ++num){
                     var oop = new cls.soldier(jsonContent[key][num].platoon, jsonContent[key][num].name, jsonContent[key][num].job, jsonContent[key][num].discharge,
-                        jsonContent[key][num].breakNum, jsonContent[key][num].nightNum, jsonContent[key][num].workNum);
+                        jsonContent[key][num].state, jsonContent[key][num].breakNum, jsonContent[key][num].nightNum, jsonContent[key][num].workNum);
                     if(key === 'platoon_1') platoon_1.push(oop);
                     else if(key === 'platoon_2') platoon_2.push(oop);
                     else if(key === 'platoon_3') platoon_3.push(oop);
                 }
             }
 
-            var recruit = new cls.soldier(newData.platoon, newData.name, newData.job, newData.discharge, newData.breakNum, newData.nightNum, newData.workNum);
+            var recruit = new cls.soldier(newData.platoon, newData.name, newData.job, newData.discharge, newData.state, newData.breakNum, newData.nightNum, newData.workNum);
             if(recruit.platoon === '1') platoon_1.push(recruit);
             else if(recruit.platoon === '2') platoon_2.push(recruit);
             else if(recruit.platoon === '3') platoon_3.push(recruit);

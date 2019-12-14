@@ -2,41 +2,39 @@ var fs = require('fs');
 var cls = require('./class.js');
 
 module.exports={
-    list : function(jsonFile, contentEditable){
+    list : function(jsonFile, option){
         console.log("template.list");
         var content = fs.readFileSync(jsonFile, 'utf8');
         var jsonContent = JSON.parse(content);
-
-        if(contentEditable === 'true'){
-            var write = 
-            `
-            <form action='/update_process' method='post'>
-            <div class='container'>
-                <div class='row'>
-                    <div class='cell'>
-                        <h5>소대</h5>
-                    </div>
-                    <div class='cell'>
-                        <h5>이름</h5>
-                    </div>
-                    <div class='cell'>
-                        <h5>직업</h5>
-                    </div>
-                    <div class='cell'>
-                        <h5>전역</h5>
-                    </div>
-                    <div class='cell'>
-                        <h5>개인정비 근무 횟수</h5>
-                    </div>
-                    <div class='cell'>
-                        <h5>야간 근무 횟수</h5>
-                    </div>
-                    <div class='cell'>
-                        <h5>총 근무 횟수</h5>
-                    </div>
-                </div>
-            `
-            ;
+        var subwrite = ` <div class='container'>
+        <div class='row'>
+            <div class='cell'>
+                <h5>소대</h5>
+            </div>
+            <div class='cell'>
+                <h5>이름</h5>
+            </div>
+            <div class='cell'>
+                <h5>직업</h5>
+            </div>
+            <div class='cell'>
+                <h5>전역</h5>
+            </div>
+            <div class='cell'>
+                <h5>상태</h5>
+            </div>
+            <div class='cell'>
+                <h5>개인정비 근무 횟수</h5>
+            </div>
+            <div class='cell'>
+                <h5>야간 근무 횟수</h5>
+            </div>
+            <div class='cell'>
+                <h5>총 근무 횟수</h5>
+            </div>
+        </div>`;
+        if(option === 'update'){
+            var write = `<form action='/update_process' method='post'>` + subwrite;
             for(var key in jsonContent){
                 for(var index = 0; index < jsonContent[key].length; ++index){
                     if(key === "platoon_1"){
@@ -51,42 +49,23 @@ module.exports={
                     write += `<div class='cell'><input type="text" name="name" value=${jsonContent[key][index].name}></div>`;
                     write += `<div class='cell'><input type="text" name="job" value=${jsonContent[key][index].job}></div>`;
                     write += `<div class='cell'><input type="date" name="discharge" value=${jsonContent[key][index].discharge}></div>`;
-                    write += `<div class='cell'><input type="date" name="discharge" value=${jsonContent[key][index].breakNum}></div>`;
-                    write += `<div class='cell'><input type="date" name="discharge" value=${jsonContent[key][index].nightNum}></div>`;
-                    write += `<div class='cell'><input type="date" name="discharge" value=${jsonContent[key][index].workNum}></div>`;
+                    if(jsonContent[key][index].state === '1'){
+                        write += `<div class='cell'>근무 가능</div>`;
+                    }
+                    else if(jsonContent[key][index].state === '0'){
+                        write += `<div class='cell'>근무 열외</div>`;
+                    }
+                    write += `<div class='cell'><input type="string" name="discharge" value=${jsonContent[key][index].breakNum}></div>`;
+                    write += `<div class='cell'><input type="string" name="discharge" value=${jsonContent[key][index].nightNum}></div>`;
+                    write += `<div class='cell'><input type="string" name="discharge" value=${jsonContent[key][index].workNum}></div>`;
                     write += `</div>`;
                 }
             }
             write += `<input type="submit" value="저장">`;
             write += `</div></form>`;
         }
-        else{
-            var write = `
-            <div class='container'>
-                <div class='row'>
-                    <div class='cell'>
-                        <h5>소대</h5>
-                    </div>
-                    <div class='cell'>
-                        <h5>이름</h5>
-                    </div>
-                    <div class='cell'>
-                        <h5>직업</h5>
-                    </div>
-                    <div class='cell'>
-                        <h5>전역</h5>
-                    </div>
-                    <div class='cell'>
-                        <h5>개인정비 근무 횟수</h5>
-                    </div>
-                    <div class='cell'>
-                        <h5>야간 근무 횟수</h5>
-                    </div>
-                    <div class='cell'>
-                        <h5>총 근무 횟수</h5>
-                    </div>
-                </div>
-            `;
+        else if(option === 'check'){
+            var write = subwrite;
             for(var key in jsonContent){
                 for(var index = 0;index < jsonContent[key].length; ++index){
                     if(key === "platoon_1"){
@@ -101,6 +80,8 @@ module.exports={
                     write += `<div class='cell'>${jsonContent[key][index].name}</div>`;
                     write += `<div class='cell'>${jsonContent[key][index].job}</div>`;
                     write += `<div class='cell'>${jsonContent[key][index].discharge}</div>`;
+                    if(jsonContent[key][index].state === '1') write += `<div class='cell'>근무 가능</div>`;
+                    else if(jsonContent[key][index].state === '0') write += `<div class='cell'>근무 열외</div>`;
                     write += `<div class='cell'>${jsonContent[key][index].breakNum}</div>`;
                     write += `<div class='cell'>${jsonContent[key][index].nightNum}</div>`;
                     write += `<div class='cell'>${jsonContent[key][index].workNum}</div>`;
@@ -108,6 +89,9 @@ module.exports={
                 }
             }
             write += "</div>";
+        }
+        else if(option === 'delete'){
+
         }
         return write;
     },
@@ -133,6 +117,9 @@ module.exports={
                             <h5>전역</h5>
                         </div>
                         <div class='cell'>
+                            <h5>상태</h5>
+                        </div>
+                        <div class='cell'>
                             <h5>개인정비 근무 횟수</h5>
                         </div>
                         <div class='cell'>
@@ -154,6 +141,12 @@ module.exports={
                         </div>
                         <div class='cell'>
                             <input type='date' name='discharge'>
+                        </div>
+                        <div class='cell'>
+                            <select name="state">
+                                <option value="0">근무 열외
+                                <option value="1">근무 가능 
+                            </select>
                         </div>
                         <div class='cell'>
                             <input type='text' name='breakNum' value='0' readonly>
@@ -201,6 +194,7 @@ module.exports={
         body += '</ul>';
         return header + body;
     },
+
     guardroom : function(identificationData, guardroomData){
         var write = 
         `
